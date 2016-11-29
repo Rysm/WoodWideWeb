@@ -48,6 +48,8 @@
      <Compile Include="Assets\Scripts\plants\douglasFir.cs" />
      <Compile Include="Assets\Scripts\plants\mistletoe.cs" />
      <Compile Include="Assets\Scripts\plants\paperBirch.cs" />
+     <Compile Include="Assets\Scripts\utility ai\utilityAgent.cs" />
+     <Compile Include="Assets\utilityAgent.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
