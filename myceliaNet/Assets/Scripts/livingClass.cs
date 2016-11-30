@@ -8,31 +8,31 @@ using System.Collections;
 
 public class plantClass : MonoBehaviour {
 
+	//life of plant - 100 alive 0 dead
+	int health = 100;
+
+	//nutrients plant has 
+	int nutri = 20;
+	//max capacity for nutrients
+	int nutri_cap = 200;
+	//amount needed per cycle to maintain or heal
+	int nutri_need = 10;
+
+	//resources for making nutri
+	int resours = 40;
+	//cap for resources
+	int resours_cap = 200;
+	//needed resources
+	int resours_need = 40;
+
+	//eat cycle
+	float eat_cycle= 0.0f;
+
+	//make cycle
+	float make_cycle = 0.0f;
+
 	// Use this for initialization
 	void Start () {
-
-		//life of plant - 100 alive 0 dead
-		int health = 100;
-
-		//nutrients plant has 
-		int nutri = 20;
-		//max capacity for nutrients
-		int nutri_cap = 200;
-		//amount needed per cycle to maintain or heal
-		int nutri_need = 10;
-
-		//resources for making nutri
-		int resours = 40;
-		//cap for resources
-		int resours_cap = 200;
-		//needed resources
-		int resours_need = 40;
-
-		//eat cycle
-		float eat_cycle= 0.0f;
-
-		//make cycle
-		float make_cycle = 0.0f;
 
 	}
 
