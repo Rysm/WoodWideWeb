@@ -8,6 +8,9 @@ using System.Collections;
 
 public class plantClass : MonoBehaviour {
 
+	GameObject theWorld = GameObject.Find("theWorld");
+	WorldScript worldScript = theWorld.GetComponent<WorldScript>();
+
 	//life of plant - 100 alive 0 dead
 	int health = 100;
 
@@ -25,16 +28,14 @@ public class plantClass : MonoBehaviour {
 	//needed resources
 	int resours_need = 40;
 
-	//eat cycle
-	float eat_cycle= 0.0f;
+	//worldTime
+	//float worldTime = 0.0f;
 
-	//make cycle
-	float make_cycle = 0.0f;
-
+	/*
 	// Use this for initialization
 	void Start () {
-
 	}
+	*/
 
 	/*
 	 * Plants need to eat like other living things
@@ -45,11 +46,8 @@ public class plantClass : MonoBehaviour {
 		//if we can eat
 		if(nutri > 0){
 			
-			//increment the timer
-			eat_cycle += Time.deltaTime;
-
 			//after 5 seconds
-			if(eat_cycle > 5.0f){
+			if( (worldScript.worldTime%5.0f)==0){
 			
 				//consume the food if we have more than/at needed
 				if (nutri >= nutri_need) {
@@ -67,9 +65,7 @@ public class plantClass : MonoBehaviour {
 		else {
 			health -= nutri_need;
 		}
-
-		//reset counter
-		eat_cycle -= 5.0f;
+			
 	}
 
 
@@ -81,11 +77,8 @@ public class plantClass : MonoBehaviour {
 		//if we can make nutrients
 		if (resours > 0){
 
-			//increment the timer
-			make_cycle += Time.deltaTime;
-
 			//every 10 seconds
-			if (make_cycle > 10.0f){
+			if ( (worldScript.worldTime%10.0f) == 0){
 
 				//if we have more than we need
 				if (resours >= resours_need){

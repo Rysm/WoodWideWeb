@@ -77,10 +77,11 @@
 -define:UNITY_EDITOR
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
+'Assets/Scripts/WorldScript.cs'
+'Assets/Scripts/livingClass.cs'
 'Assets/Scripts/plants/douglasFir.cs'
 'Assets/Scripts/plants/mistletoe.cs'
 'Assets/Scripts/plants/paperBirch.cs'
-'Assets/Scripts/utility ai/utilityAgent.cs'
 'Assets/utilityAgent.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'
