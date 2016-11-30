@@ -50,7 +50,7 @@ public class livingClass : MonoBehaviour {
 			consumeTime += Time.deltaTime;
 			
 			//after 5 seconds
-			if( (consumeTime%5.0f)==0){
+			if( consumeTime >= 5.0f){
 			
 				//consume the food if we have more than/at needed
 				if (nutri >= nutri_need) {
@@ -61,6 +61,9 @@ public class livingClass : MonoBehaviour {
 				else if (nutri < nutri_need) {
 					nutri -= nutri;
 				}
+
+				//reset it
+				consumeTime = 0.0f;
 			}
 		}
 			
@@ -84,7 +87,7 @@ public class livingClass : MonoBehaviour {
 			produceTime += Time.deltaTime;
 
 			//every 10 seconds
-			if ( (produceTime%10.0f) == 0){
+			if ( produceTime >= 10.0f ){
 
 				//if we have more than we need
 				if (resours >= resours_need){
@@ -97,8 +100,13 @@ public class livingClass : MonoBehaviour {
 					resours -= resours;
 					nutri += (resours/2);
 				}
+
+				//reset time
+				produceTime = 0.0f;
 			}
 		}
+		
+
 
 	}
 
@@ -116,5 +124,7 @@ public class livingClass : MonoBehaviour {
 	void Update () {
 		Produce ();
 		Consume ();
+		Debug.Log ("plant nutrients :" + nutri);
+		Debug.Log ("plant resours :" + resours);
 	}
 }
