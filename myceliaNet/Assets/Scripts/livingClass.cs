@@ -29,10 +29,10 @@ public class plantClass : MonoBehaviour {
 		int resours_need = 40;
 
 		//eat cycle
-		var eat_cycle:float = 0.0f;
+		float eat_cycle= 0.0f;
 
 		//make cycle
-		var make_cycle:float = 0.0f;
+		float make_cycle = 0.0f;
 
 	}
 
