@@ -6,10 +6,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class plantClass : MonoBehaviour {
-
-	GameObject theWorld = GameObject.Find("theWorld");
-	WorldScript worldScript = theWorld.GetComponent<WorldScript>();
+public class livingClass : MonoBehaviour {
 
 	//life of plant - 100 alive 0 dead
 	int health = 100;
@@ -28,8 +25,11 @@ public class plantClass : MonoBehaviour {
 	//needed resources
 	int resours_need = 40;
 
-	//worldTime
-	//float worldTime = 0.0f;
+	//produce counter
+	public float produceTime = 0.0f;
+
+	//consume counter
+	public float consumeTime = 0.0f;
 
 	/*
 	// Use this for initialization
@@ -45,9 +45,12 @@ public class plantClass : MonoBehaviour {
 
 		//if we can eat
 		if(nutri > 0){
+
+			//increment timer
+			consumeTime += Time.deltaTime;
 			
 			//after 5 seconds
-			if( (worldScript.worldTime%5.0f)==0){
+			if( (consumeTime%5.0f)==0){
 			
 				//consume the food if we have more than/at needed
 				if (nutri >= nutri_need) {
@@ -77,8 +80,11 @@ public class plantClass : MonoBehaviour {
 		//if we can make nutrients
 		if (resours > 0){
 
+			//increment timer
+			produceTime += Time.deltaTime;
+
 			//every 10 seconds
-			if ( (worldScript.worldTime%10.0f) == 0){
+			if ( (produceTime%10.0f) == 0){
 
 				//if we have more than we need
 				if (resours >= resours_need){
@@ -108,6 +114,7 @@ public class plantClass : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Produce ();
+		Consume ();
 	}
 }
