@@ -9,7 +9,7 @@ using System.Collections;
 public class livingClass : MonoBehaviour {
 
 	//age
-	public int plant_age = 1;
+	public float plant_age = 1;
 
 	//produce counter
 	public float plantTime = 0.0f;
@@ -30,12 +30,6 @@ public class livingClass : MonoBehaviour {
 	int resours_cap = 200;
 	//needed resources
 	int resours_need = 20;
-
-	/*
-	// Use this for initialization
-	void Start () {
-	}
-	*/
 
 	/*
 	 * Plants need to eat like other living things
@@ -91,7 +85,7 @@ public class livingClass : MonoBehaviour {
 
 	//Plants grow
 	void Grow(){
-		
+		plant_age += 0.01f;
 	}
 
 	//plant heals itself over time
@@ -99,7 +93,7 @@ public class livingClass : MonoBehaviour {
 		
 		//Shitty repairing
 		if (health < 100) {
-			health += 1;
+			health += 01;
 		}
 	}
 	
@@ -109,7 +103,7 @@ public class livingClass : MonoBehaviour {
 		//increment timer
 		plantTime += Time.deltaTime;
 
-		Debug.Log ("Round plant time" + Mathf.Round(plantTime));
+		//Debug.Log ("Round plant time" + Mathf.Round(plantTime));
 
 		if ( plantTime >= 5 ) {
 			Produce ();
