@@ -8,6 +8,12 @@ using System.Collections;
 
 public class livingClass : MonoBehaviour {
 
+	//age
+	public int plant_age = 1;
+
+	//produce counter
+	public float plantTime = 0.0f;
+
 	//life of plant - 100 alive 0 dead
 	int health = 100;
 
@@ -23,13 +29,7 @@ public class livingClass : MonoBehaviour {
 	//cap for resources
 	int resours_cap = 200;
 	//needed resources
-	int resours_need = 40;
-
-	//produce counter
-	public float produceTime = 0.0f;
-
-	//consume counter
-	public float consumeTime = 0.0f;
+	int resours_need = 20;
 
 	/*
 	// Use this for initialization
@@ -45,12 +45,6 @@ public class livingClass : MonoBehaviour {
 
 		//if we can eat
 		if(nutri > 0){
-
-			//increment timer
-			consumeTime += Time.deltaTime;
-			
-			//after 5 seconds
-			if( consumeTime >= 5.0f){
 			
 				//consume the food if we have more than/at needed
 				if (nutri >= nutri_need) {
@@ -62,9 +56,6 @@ public class livingClass : MonoBehaviour {
 					nutri -= nutri;
 				}
 
-				//reset it
-				consumeTime = 0.0f;
-			}
 		}
 			
 		//we're starving - taking damage
@@ -83,12 +74,6 @@ public class livingClass : MonoBehaviour {
 		//if we can make nutrients
 		if (resours > 0){
 
-			//increment timer
-			produceTime += Time.deltaTime;
-
-			//every 10 seconds
-			if ( produceTime >= 10.0f ){
-
 				//if we have more than we need
 				if (resours >= resours_need){
 					resours -= resours_need;
@@ -100,13 +85,7 @@ public class livingClass : MonoBehaviour {
 					resours -= resours;
 					nutri += (resours/2);
 				}
-
-				//reset time
-				produceTime = 0.0f;
-			}
 		}
-		
-
 
 	}
 
@@ -118,12 +97,28 @@ public class livingClass : MonoBehaviour {
 	//plant heals itself over time
 	void Repair(){
 		
+		//Shitty repairing
+		if (health < 100) {
+			health += 1;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Produce ();
-		Consume ();
+		
+		//increment timer
+		plantTime += Time.deltaTime;
+
+		Debug.Log ("Round plant time" + Mathf.Round(plantTime));
+
+		if ( plantTime >= 5 ) {
+			Produce ();
+			Consume ();
+			plantTime = 0.0f;
+		}
+
+		Grow ();
+		Repair ();
 		Debug.Log ("plant nutrients :" + nutri);
 		Debug.Log ("plant resours :" + resours);
 	}
