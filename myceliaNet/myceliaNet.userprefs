@@ -1,9 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\utilityAgent.cs">
     <Files>
       <File FileName="Assets\Scripts\plants\douglasFir.cs" Line="1" Column="1" />
       <File FileName="Assets\utilityAgent.cs" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/livingClass.cs">
+    <Files>
+      <File FileName="Assets/Scripts/livingClass.cs" Line="88" Column="21" />
+      <File FileName="Assets/Scripts/worldScript.cs" Line="23" Column="3" />
+>>>>>>> dev_andy
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\plants\douglasFir.cs" />
      <Compile Include="Assets\Scripts\plants\mistletoe.cs" />
      <Compile Include="Assets\Scripts\plants\paperBirch.cs" />
+     <Compile Include="Assets\Scripts\worldScript.cs" />
      <Compile Include="Assets\utilityAgent.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
