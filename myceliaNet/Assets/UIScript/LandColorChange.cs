@@ -4,21 +4,21 @@ using System.Collections;
 public class LandColorChange : MonoBehaviour {
 
     public float slider = 0f;
-    UnityEngine.UI.Image image;
+    //UnityEngine.UI.Image image;
     private Color newColour;
+    private SpriteRenderer renderer;
 
 	// Use this for initialization
 	void Start () {
-        image = GetComponent<UnityEngine.UI.Image>();
-        //image.color = Color.red;
-        newColour = image.color;
+        //image = GetComponent<UnityEngine.UI.Image>();
+        //newColour = image.color;
+        renderer = gameObject.GetComponent<SpriteRenderer>();
+        newColour = renderer.color;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //image.color = Color.Lerp(color1, color2, Time.deltaTime);
-        //t += Time.deltaTime * 2;
-        ChangeColor();//image.color = color;
+        ChangeColor();
     }
 
     void ChangeColor () {
@@ -28,7 +28,7 @@ public class LandColorChange : MonoBehaviour {
             newColour = new Color(34f / 255f, 139f / 255f, 34f / 255f);
         else if (slider == 2) //corn silk
             newColour = new Color(255f / 255f, 248f / 255f, 220f / 255f);
-        image.color = Color.Lerp(image.color, newColour, Time.deltaTime * 2);
+        renderer.color = Color.Lerp(renderer.color, newColour, Time.deltaTime * 3);
     }
 
     public void AdjustColor (float newSlider) {
