@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\plants\mistletoe.cs" />
      <Compile Include="Assets\Scripts\plants\paperBirch.cs" />
      <Compile Include="Assets\UIScript\LandColorChange.cs" />
+     <Compile Include="Assets\UIScript\SkyColorChange.cs" />
      <Compile Include="Assets\utilityAgent.cs" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
