@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class douglasFir : MonoBehaviour {
+public class douglasFir : livingClass {
 
 	// Use this for initialization
 	void Start () {

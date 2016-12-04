@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class mistletoe : MonoBehaviour {
+public class mistletoe : livingClass {
 
 	// Use this for initialization
 	void Start () {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class paperBirch : MonoBehaviour {
+public class paperBirch : livingClass {
 
 	// Use this for initialization
 	void Start () {

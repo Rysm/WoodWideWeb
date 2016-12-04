@@ -12,7 +12,7 @@ public class myceliaNet : MonoBehaviour {
 	public float myceliaTimer = 0.0f;
 
 	//creates a dictionary to store everything
-	List<string> myNet = new List<string>;
+	//List<string> myNet = new List<string>;
 
 	// Use this for initialization
 	void Start () {
