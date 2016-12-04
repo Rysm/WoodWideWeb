@@ -1,5 +1,5 @@
 ﻿/*
- * Parent class for living entities
+ * Main class for living entities
  * by Andy Wang
  */
 
@@ -30,6 +30,12 @@ public class livingClass : MonoBehaviour {
 	int resours_cap = 200;
 	//needed resources
 	int resours_need = 20;
+
+	//plant state
+	public string plant_state = "idle";
+
+	//plant toxic state
+	bool plantSick = false;
 
 	/*
 	 * Plants need to eat like other living things
@@ -88,6 +94,15 @@ public class livingClass : MonoBehaviour {
 		plant_age += 0.01f;
 	}
 
+	//Plants take damage
+	void Infected(){
+
+		if (health >= 0) {
+			
+		}
+
+	}
+
 	//plant heals itself over time
 	void Repair(){
 
@@ -95,13 +110,6 @@ public class livingClass : MonoBehaviour {
 		if (health < 100) {
 			health += 01;
 		}
-	}
-
-	/*
-	 * Plant attack 
-	*/
-	void Attack(){
-
 	}
 
 	// Update is called once per frame
@@ -112,15 +120,20 @@ public class livingClass : MonoBehaviour {
 
 		//Debug.Log ("Round plant time" + Mathf.Round(plantTime));
 
-		if ( plantTime >= 5 ) {
+		if (plantTime >= 5) {
 			Produce ();
 			Consume ();
+
+			if (plantSick == true){
+				Infected ();
+			}
+
 			plantTime = 0.0f;
-		}
+		} 
 
 		Grow ();
 		Repair ();
-		Debug.Log ("plant nutrients :" + nutri);
-		Debug.Log ("plant resours :" + resours);
+		//Debug.Log ("plant nutrients :" + nutri);
+		//Debug.Log ("plant resours :" + resours);
 	}
 }
