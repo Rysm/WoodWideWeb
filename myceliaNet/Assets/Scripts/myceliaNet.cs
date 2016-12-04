@@ -12,7 +12,8 @@ public class myceliaNet : MonoBehaviour {
 	public float myceliaTimer = 0.0f;
 
 	//creates a dictionary to store everything
-	//List<string> myNet = new List<string>;
+	//List<string> myNet = new List<string>();
+	Dictionary<string, string> myNet = new Dictionary<string, string>();
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,6 @@ public class myceliaNet : MonoBehaviour {
 		//get all the plant objects in the scene
 		GameObject[] allPlants = FindObjectsOfType<GameObject>();
 		//Debug.Log (allPlants);
-		//Debug.Log (allPlants[0]);
 
 	}
 
