@@ -39,24 +39,24 @@ public class livingClass : MonoBehaviour {
 
 		//if we can eat
 		if(nutri > 0){
-			
-				//consume the food if we have more than/at needed
-				if (nutri >= nutri_need) {
-					nutri -= nutri_need;
-				} 
 
-				//if we have less than needed - get by
-				else if (nutri < nutri_need) {
-					nutri -= nutri;
-				}
+			//consume the food if we have more than/at needed
+			if (nutri >= nutri_need) {
+				nutri -= nutri_need;
+			} 
+
+			//if we have less than needed - get by
+			else if (nutri < nutri_need) {
+				nutri -= nutri;
+			}
 
 		}
-			
+
 		//we're starving - taking damage
 		else {
 			health -= nutri_need;
 		}
-			
+
 	}
 
 
@@ -68,17 +68,17 @@ public class livingClass : MonoBehaviour {
 		//if we can make nutrients
 		if (resours > 0){
 
-				//if we have more than we need
-				if (resours >= resours_need){
-					resours -= resours_need;
-					nutri += (resours_need/2);
-				}
+			//if we have more than we need
+			if (resours >= resours_need){
+				resours -= resours_need;
+				nutri += (resours_need/2);
+			}
 
-				//use anyway up if we dont
-				else if(resours < resours_need){
-					resours -= resours;
-					nutri += (resours/2);
-				}
+			//use anyway up if we dont
+			else if(resours < resours_need){
+				resours -= resours;
+				nutri += (resours/2);
+			}
 		}
 
 	}
@@ -90,16 +90,23 @@ public class livingClass : MonoBehaviour {
 
 	//plant heals itself over time
 	void Repair(){
-		
+
 		//Shitty repairing
 		if (health < 100) {
 			health += 01;
 		}
 	}
-	
+
+	/*
+	 * Plant attack 
+	*/
+	void Attack(){
+
+	}
+
 	// Update is called once per frame
 	void Update () {
-		
+
 		//increment timer
 		plantTime += Time.deltaTime;
 
