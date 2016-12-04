@@ -97,7 +97,7 @@ public class livingClass : MonoBehaviour {
 	//Plants take damage
 	void Infected(){
 		
-		health -= Mathf.Round( nutri*0.5 );
+		health -= 5;
 
 	}
 
