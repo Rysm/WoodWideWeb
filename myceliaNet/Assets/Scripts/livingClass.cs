@@ -18,11 +18,13 @@ public class livingClass : MonoBehaviour {
 	int health = 100;
 
 	//nutrients plant has 
-	int nutri = 20;
+	public int nutri = 20;
 	//max capacity for nutrients
 	int nutri_cap = 200;
 	//amount needed per cycle to maintain or heal
 	int nutri_need = 10;
+	//how much is given
+	public int nutri_sent = 0; 
 
 	//resources for making nutri
 	int resours = 40;
@@ -32,6 +34,7 @@ public class livingClass : MonoBehaviour {
 	int resours_need = 20;
 
 	//plant state
+	//idle or transfer
 	public string plant_state = "idle";
 
 	//plant toxic state
@@ -89,6 +92,25 @@ public class livingClass : MonoBehaviour {
 
 	}
 
+	//Assess function
+	void Assess(){
+		
+	}
+
+	//Assist plant
+	void Assist(){
+
+		//Figure out target?
+
+		//Calculate amount of 
+		
+		//runs the child transfer function
+		//run it in mycelia.
+		//childScript.Transfer(douglasFir, paperBirch);
+		plant_state = "assist";
+
+	}
+
 	//Plants grow
 	void Grow(){
 		plant_age += 0.01f;
@@ -131,6 +153,9 @@ public class livingClass : MonoBehaviour {
 
 		Grow ();
 		Repair ();
+
+
+		Assist ();
 		//Debug.Log ("plant nutrients :" + nutri);
 		//Debug.Log ("plant resours :" + resours);
 	}
