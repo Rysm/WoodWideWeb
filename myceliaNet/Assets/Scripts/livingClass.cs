@@ -97,7 +97,11 @@ public class livingClass : MonoBehaviour {
 	//Plants take damage
 	void Infected(){
 		
+<<<<<<< HEAD
 		health -= 5;
+=======
+		health -= nutri;
+>>>>>>> dev_andy
 
 	}
 
