@@ -47,6 +47,7 @@ public class myceliaNet : livingClass {
 			foreach (GameObject plant in plants) {
 				plantList.Add (plant);
 			}
+			plantList.Sort((IComparer<GameObject>)new plantSort());
 
 			myceliaTimer = 0.0f;
 		}
@@ -68,8 +69,9 @@ public class myceliaNet : livingClass {
 		transferTimer += Time.deltaTime;
 
 		//Get it to the target between 1 and 10 seconds
-		if (transferTimer >= Random.Range(1, 10) ){
-			destination.GetComponent<livingClass>().nutri += 10;
+		if (transferTimer >= Random.Range(1, 5) ){
+			destination.GetComponent<livingClass>().nutri += destination.GetComponent<livingClass>().nutri_need ;
+			source.GetComponent<livingClass>().nutri -= destination.GetComponent<livingClass>().nutri_need;
 		}
 
 		//take about... random time.
@@ -80,8 +82,29 @@ public class myceliaNet : livingClass {
 	void Update () {
 		Query ();
 		transferTimer += Time.deltaTime;
+
+		if ((plantList [1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
+			Debug.Log ("We're in, patching you through now.");
+			Transfer (plantList [1], plantList [0]);
+		}
+
+		if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[1].GetComponent<livingClass>().nutri)) {
+			Debug.Log ("We're in, patching you through now.");
+			Transfer (plantList [0], plantList [1]);
+		}
+
+		//
 		if (transferTimer >= 10) {
 			transferTimer = 0.0f;
 		} 
+		if (plantList[1].GetComponent<livingClass>().health <= 0){
+			Destroy(plantList[1]);
+		}
+		if (plantList[0].GetComponent<livingClass>().health <= 0){
+			Destroy(plantList[0]);
+		}
+
+		//Debug.Log ("same : " + plantList[0].GetComponent<livingClass>().nutri);
+		//Debug.Log ("same : " + plantList[1]);
 	}
 }

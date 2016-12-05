@@ -15,23 +15,23 @@ public class livingClass : MonoBehaviour {
 	public float plantTime = 0.0f;
 
 	//life of plant - 100 alive 0 dead
-	int health = 100;
+	public int health = 100;
 
 	//nutrients plant has 
-	public int nutri = 20;
+	public int nutri = Random.Range(1,4) * 20;
 	//max capacity for nutrients
 	int nutri_cap = 200;
 	//amount needed per cycle to maintain or heal
-	int nutri_need = 10;
+	public int nutri_need = Random.Range(1,4) * 10;
 	//how much is given
 	public int nutri_sent = 0; 
 
 	//resources for making nutri
-	int resours = 40;
+	public int resours = Random.Range(1,4) * 40;
 	//cap for resources
 	int resours_cap = 200;
 	//needed resources
-	int resours_need = 20;
+	public int resours_need = Random.Range(1,4) * 20;
 
 	//plant state
 	//idle or transfer
@@ -57,6 +57,7 @@ public class livingClass : MonoBehaviour {
 			//if we have less than needed - get by
 			else if (nutri < nutri_need) {
 				nutri -= nutri;
+				health -= (nutri_need - nutri);
 			}
 
 		}
@@ -80,13 +81,13 @@ public class livingClass : MonoBehaviour {
 			//if we have more than we need
 			if (resours >= resours_need){
 				resours -= resours_need;
-				nutri += (resours_need/2);
+				nutri += (resours_need);
 			}
 
 			//use anyway up if we dont
 			else if(resours < resours_need){
-				resours -= resours;
-				nutri += (resours/2);
+				//resours -= resours;
+				//nutri += (resours/2);
 			}
 		}
 
@@ -107,7 +108,11 @@ public class livingClass : MonoBehaviour {
 		//runs the child transfer function
 		//run it in mycelia.
 		//childScript.Transfer(douglasFir, paperBirch);
-		plant_state = "assist";
+		if (nutri > nutri_need) {
+			plant_state = "assist";
+		} else {
+			plant_state = "idle";
+		}
 
 	}
 
@@ -121,6 +126,10 @@ public class livingClass : MonoBehaviour {
 		
 		health -= nutri;
 
+	}
+
+	void makeResource(){
+		resours += Random.Range (10, 20);
 	}
 
 	//plant heals itself over time
@@ -143,19 +152,21 @@ public class livingClass : MonoBehaviour {
 		if (plantTime >= 5) {
 			Produce ();
 			Consume ();
+			makeResource ();
+			Grow ();
+			//Repair ();
+			Assist ();
 
+			/*
 			if (plantSick == true){
 				Infected ();
 			}
+			*/
 
 			plantTime = 0.0f;
 		} 
 
-		Grow ();
-		Repair ();
 
-
-		Assist ();
 		//Debug.Log ("plant nutrients :" + nutri);
 		//Debug.Log ("plant resours :" + resours);
 	}
