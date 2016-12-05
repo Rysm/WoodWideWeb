@@ -83,14 +83,14 @@ public class myceliaNet : livingClass {
 		Query ();
 		transferTimer += Time.deltaTime;
 
-		if ((plantList [1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
-			Debug.Log ("We're in, patching you through now.");
-			Transfer (plantList [1], plantList [0]);
+		if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
+			//Debug.Log ("We're in, patching you through now.");
+			Transfer (plantList [plantList.Count - 1], plantList [0]);
 		}
 
-		if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[1].GetComponent<livingClass>().nutri)) {
-			Debug.Log ("We're in, patching you through now.");
-			Transfer (plantList [0], plantList [1]);
+		if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[plantList.Count - 1].GetComponent<livingClass>().nutri)) {
+			//Debug.Log ("We're in, patching you through now.");
+			Transfer (plantList [0], plantList [plantList.Count - 1]);
 		}
 
 		//
