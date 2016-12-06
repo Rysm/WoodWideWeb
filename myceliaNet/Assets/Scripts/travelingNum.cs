@@ -1,4 +1,5 @@
 ﻿//visual prefab for sending text around
+//useless...
 
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +7,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class travelingNum : myceliaNet { 
-
-	GameObject myself;
 
 	Text sending;
 

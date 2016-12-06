@@ -19,3 +19,5 @@
 /Users/Andy/Desktop/WoodWideWeb/myceliaNet/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Andy/Desktop/WoodWideWeb/myceliaNet/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Andy/Desktop/WoodWideWeb/myceliaNet/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Andy/Desktop/WoodWideWeb/myceliaNet/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/Andy/Desktop/WoodWideWeb/myceliaNet/Temp/bin/Debug/UnityEngine.Purchasing.dll

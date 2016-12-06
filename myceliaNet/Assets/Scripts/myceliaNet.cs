@@ -6,9 +6,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class myceliaNet : livingClass {
-
+	
 	//timers
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
@@ -23,7 +24,7 @@ public class myceliaNet : livingClass {
 	//dank
 	int transferTime;
 
-	Color txtColor = Color.black;
+	Color textColor = Color.black;
 
 	void Awake(){
 		transferTime = Random.Range(3, 7);
@@ -39,6 +40,8 @@ public class myceliaNet : livingClass {
 			plantList.Add (plant);
 		}
 		plantList.Sort((IComparer<GameObject>)new plantSort());
+		//sending is the text 
+		sending = GetComponent<Text>();
 	}
 
 	private class plantSort : IComparer<GameObject>{
@@ -105,7 +108,7 @@ public class myceliaNet : livingClass {
 				transferring = false;
 
 				//instantiate the draw text prefab
-
+				//Transform projectile = (Transform)Instantiate(text);//
 
 				//Debug.Log (send_nutri);
 			}
