@@ -12,9 +12,9 @@ public class myceliaNet : livingClass {
 
 	//Text stuff
 	public Text sendText;
+
 	//opacity of text
-	float alpha = 1f;
-	string sentAmount;
+	//float alpha = 1f;
 
 	Vector2 targetPos;
 
@@ -41,7 +41,9 @@ public class myceliaNet : livingClass {
 	public List<GameObject> plantList = new List<GameObject>(); 
 
 	void Start(){
-		sendText.text = "";//
+		
+		sendText = GetComponent<UnityEngine.UI.Text>();
+
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
 		foreach (GameObject plant in plants) {
@@ -114,8 +116,9 @@ public class myceliaNet : livingClass {
 				destination.GetComponent<livingClass>().nutri += send_nutri ;
 				source.GetComponent<livingClass>().nutri -= send_nutri;
 
-				//instantiate the draw text function
-				drawText();
+				//stuff
+				targetPos = destPos - sourcePos;
+				sendText.text = send_nutri.ToString(); //???
 
 				//Debug.Log (send_nutri);
 			}
@@ -123,18 +126,6 @@ public class myceliaNet : livingClass {
 		}
 		//take about... random time.
 
-	}
-
-	//Text dat
-	void drawText(){
-
-		sentAmount = send_nutri.ToString ();
-
-		//position we're trying to move to
-		targetPos = destPos - sourcePos;
-
-		sendText.text =  sentAmount;
-	
 	}
 
 	// Update is called once per frame
