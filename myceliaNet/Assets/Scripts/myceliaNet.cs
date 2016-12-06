@@ -24,8 +24,6 @@ public class myceliaNet : livingClass {
 	//dank
 	int transferTime;
 
-	Color textColor = Color.black;
-
 	void Awake(){
 		transferTime = Random.Range(3, 7);
 	}
@@ -40,8 +38,7 @@ public class myceliaNet : livingClass {
 			plantList.Add (plant);
 		}
 		plantList.Sort((IComparer<GameObject>)new plantSort());
-		//sending is the text 
-		sending = GetComponent<Text>();
+
 	}
 
 	private class plantSort : IComparer<GameObject>{
