@@ -9,35 +9,47 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class myceliaNet : livingClass {
-	
+
+	//Text stuff
+	public Text sendText;
+	//opacity of text
+	float alpha = 1f;
+	string sentAmount;
+
+	Vector2 targetPos;
+
 	//timers
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
 
+	//vector 2's that find the positions of both plants involved
 	public Vector2 sourcePos;
 	public Vector2 destPos;
 
+	//how much to send
 	public int send_nutri;
 
+	bool ready = false;
+
+	//if it's not in the middle of transferring
 	bool transferring = false;
 
 	//dank
 	int transferTime;
 
-	void Awake(){
-		transferTime = Random.Range(3, 7);
-	}
-
 	//list of plants used in sorting for priority
 	public List<GameObject> plantList = new List<GameObject>(); 
 
 	void Start(){
+		sendText.text = "";//
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
 		foreach (GameObject plant in plants) {
 			plantList.Add (plant);
 		}
 		plantList.Sort((IComparer<GameObject>)new plantSort());
+		ready = true;
+		transferTime = Random.Range(3, 7);
 
 	}
 
@@ -102,10 +114,8 @@ public class myceliaNet : livingClass {
 				destination.GetComponent<livingClass>().nutri += send_nutri ;
 				source.GetComponent<livingClass>().nutri -= send_nutri;
 
-				transferring = false;
-
-				//instantiate the draw text prefab
-				//Transform projectile = (Transform)Instantiate(text);//
+				//instantiate the draw text function
+				drawText();
 
 				//Debug.Log (send_nutri);
 			}
@@ -115,19 +125,35 @@ public class myceliaNet : livingClass {
 
 	}
 
+	//Text dat
+	void drawText(){
+
+		sentAmount = send_nutri.ToString ();
+
+		//position we're trying to move to
+		targetPos = destPos - sourcePos;
+
+		sendText.text =  sentAmount;
+	
+	}
+
 	// Update is called once per frame
 	void Update () {
 		Query ();
 		transferTimer += Time.deltaTime;
 
-		if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
-			//Debug.Log ("We're in, patching you through now.");
-			Transfer (plantList [plantList.Count - 1], plantList [0]);
-		}
+		if (ready) {
 
-		if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[plantList.Count - 1].GetComponent<livingClass>().nutri)) {
-			//Debug.Log ("We're in, patching you through now.");
-			Transfer (plantList [0], plantList [plantList.Count - 1]);
+			if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
+				//Debug.Log ("We're in, patching you through now.");
+				Transfer (plantList [plantList.Count - 1], plantList [0]);
+			}
+
+			if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[plantList.Count - 1].GetComponent<livingClass>().nutri)) {
+				//Debug.Log ("We're in, patching you through now.");
+				Transfer (plantList [0], plantList [plantList.Count - 1]);
+			}
+
 		}
 
 		//

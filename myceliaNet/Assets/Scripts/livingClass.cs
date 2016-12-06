@@ -8,9 +8,11 @@ using System.Collections;
 
 public class livingClass : MonoBehaviour {
 
+	/*
 	void Start(){
 		
 	}
+	*/
 
 	//age
 	public float plant_age = 1;
@@ -38,11 +40,11 @@ public class livingClass : MonoBehaviour {
 	public int resours_need;
 
 	//plant state
-	//idle or transfer
+	//idle or assist
 	public string plant_state = "idle";
 
 	//plant toxic state
-	bool plantSick = false;
+	//bool plantSick = false;
 
 	void Awake(){
 		nutri = Random.Range(1,4) * 20;
