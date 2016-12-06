@@ -8,6 +8,10 @@ using System.Collections;
 
 public class livingClass : MonoBehaviour {
 
+	void Start(){
+		
+	}
+
 	//age
 	public float plant_age = 1;
 
@@ -18,20 +22,20 @@ public class livingClass : MonoBehaviour {
 	public int health = 100;
 
 	//nutrients plant has 
-	public int nutri = Random.Range(1,4) * 20;
+	public int nutri;
 	//max capacity for nutrients
 	int nutri_cap = 200;
 	//amount needed per cycle to maintain or heal
-	public int nutri_need = Random.Range(1,4) * 10;
+	public int nutri_need;
 	//how much is given
 	public int nutri_sent = 0; 
 
 	//resources for making nutri
-	public int resours = Random.Range(1,4) * 40;
+	public int resours;
 	//cap for resources
 	int resours_cap = 200;
 	//needed resources
-	public int resours_need = Random.Range(1,4) * 20;
+	public int resours_need;
 
 	//plant state
 	//idle or transfer
@@ -39,6 +43,14 @@ public class livingClass : MonoBehaviour {
 
 	//plant toxic state
 	bool plantSick = false;
+
+	void Awake(){
+		nutri = Random.Range(1,4) * 20;
+		nutri_need = Random.Range(1,4) * 10;
+		resours = Random.Range(1,4) * 40;
+		resours_need = Random.Range(1,4) * 20;
+
+	}
 
 	/*
 	 * Plants need to eat like other living things
@@ -81,7 +93,12 @@ public class livingClass : MonoBehaviour {
 			//if we have more than we need
 			if (resours >= resours_need){
 				resours -= resours_need;
-				nutri += (resours_need);
+
+				//gain nutrients not past 
+				if (nutri < nutri_cap) {
+					nutri += (resours_need);
+				}
+
 			}
 
 			//use anyway up if we dont
@@ -124,16 +141,14 @@ public class livingClass : MonoBehaviour {
 	//Plants take damage
 	void Infected(){
 		
-<<<<<<< HEAD
-		health -= 5;
-=======
 		health -= nutri;
->>>>>>> dev_andy
 
 	}
 
 	void makeResource(){
-		resours += Random.Range (10, 20);
+		if (resours < resours_cap) {
+			resours += Random.Range (10, 20);
+		}
 	}
 
 	//plant heals itself over time
@@ -167,9 +182,15 @@ public class livingClass : MonoBehaviour {
 			}
 			*/
 
-			plantTime = 0.0f;
-		} 
+			//die
+			if (health <= 0){
+				Destroy(this);
+			}
 
+			plantTime = 0.0f;
+		}
+
+		//Debug.Log ("my pos: " + this.transform.position);
 
 		//Debug.Log ("plant nutrients :" + nutri);
 		//Debug.Log ("plant resours :" + resours);

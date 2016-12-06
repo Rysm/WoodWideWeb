@@ -13,6 +13,22 @@ public class myceliaNet : livingClass {
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
 
+	public Vector2 sourcePos;
+	public Vector2 destPos;
+
+	public int send_nutri;
+
+	bool transferring = false;
+
+	//dank
+	int transferTime;
+
+	Color txtColor = Color.black;
+
+	void Awake(){
+		transferTime = Random.Range(3, 7);
+	}
+
 	//list of plants used in sorting for priority
 	public List<GameObject> plantList = new List<GameObject>(); 
 
@@ -68,12 +84,33 @@ public class myceliaNet : livingClass {
 
 		transferTimer += Time.deltaTime;
 
-		//Get it to the target between 1 and 10 seconds
-		if (transferTimer >= Random.Range(1, 5) ){
-			destination.GetComponent<livingClass>().nutri += destination.GetComponent<livingClass>().nutri_need ;
-			source.GetComponent<livingClass>().nutri -= destination.GetComponent<livingClass>().nutri_need;
-		}
+		//if we aint transferring already
+		if (transferring == false) {
 
+			//Get it to the target between 1 and 10 seconds
+			if (transferTimer >= Random.Range(1, 5) ){
+
+				transferring = true;
+
+				sourcePos = destination.transform.position;
+				destPos = source.transform.position;
+
+				//get their needed val
+				send_nutri = destination.GetComponent<livingClass>().nutri_need;
+
+				//exchange values as needed
+				destination.GetComponent<livingClass>().nutri += send_nutri ;
+				source.GetComponent<livingClass>().nutri -= send_nutri;
+
+				transferring = false;
+
+				//instantiate the draw text prefab
+
+
+				//Debug.Log (send_nutri);
+			}
+
+		}
 		//take about... random time.
 
 	}
@@ -94,15 +131,16 @@ public class myceliaNet : livingClass {
 		}
 
 		//
-		if (transferTimer >= 10) {
+		if (transferTimer >= transferTime) {
 			transferTimer = 0.0f;
-		} 
-		if (plantList[1].GetComponent<livingClass>().health <= 0){
-			Destroy(plantList[1]);
+			transferTime = Random.Range(3, 7);
 		}
-		if (plantList[0].GetComponent<livingClass>().health <= 0){
-			Destroy(plantList[0]);
+
+		/*
+		if (health <= 0){
+			Destroy(this);
 		}
+		*/
 
 		//Debug.Log ("same : " + plantList[0].GetComponent<livingClass>().nutri);
 		//Debug.Log ("same : " + plantList[1]);
