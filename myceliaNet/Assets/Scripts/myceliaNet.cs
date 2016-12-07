@@ -112,6 +112,8 @@ public class myceliaNet : livingClass {
 				//get their needed val
 				send_nutri = destination.GetComponent<livingClass>().nutri_need;
 
+				Debug.Log ("send_nutri : "  + send_nutri);
+
 				//exchange values as needed
 				destination.GetComponent<livingClass>().nutri += send_nutri ;
 				source.GetComponent<livingClass>().nutri -= send_nutri;
@@ -120,7 +122,6 @@ public class myceliaNet : livingClass {
 				targetPos = destPos - sourcePos;
 				sendText.text = send_nutri.ToString(); //???
 
-				//Debug.Log (send_nutri);
 			}
 
 		}
@@ -159,7 +160,7 @@ public class myceliaNet : livingClass {
 		}
 		*/
 
-		//Debug.Log ("same : " + plantList[0].GetComponent<livingClass>().nutri);
-		//Debug.Log ("same : " + plantList[1]);
+		Debug.Log ("plantList[0] : " + plantList[0].GetComponent<livingClass>().nutri);
+		Debug.Log ("plantList[1] : " + plantList[1].GetComponent<livingClass>().nutri);
 	}
 }
