@@ -1,10 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/myceliaText.cs">
     <Files>
       <File FileName="Assets/Scripts/livingClass.cs" Line="84" Column="3" />
       <File FileName="Assets/Scripts/myceliaNet.cs" Line="64" Column="15" />
       <File FileName="Assets/Scripts/myceliaText.cs" Line="27" Column="18" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DrawLine.cs">
+    <Files>
+      <File FileName="Assets/Scripts/livingClass.cs" Line="52" Column="26" />
+      <File FileName="Assets/Scripts/myceliaNet.cs" Line="148" Column="26" />
+      <File FileName="Assets/DrawLine.cs" Line="24" Column="1" />
+>>>>>>> master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
