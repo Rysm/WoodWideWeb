@@ -13,9 +13,7 @@ public class myceliaNet : livingClass {
 	//Text stuff
 	public Text sendText;
 
-	//opacity of text
-	//float alpha = 1f;
-
+	//Vector2
 	Vector2 targetPos;
 
 	//timers
@@ -29,6 +27,7 @@ public class myceliaNet : livingClass {
 	//how much to send
 	public int send_nutri;
 
+	//is it ready?
 	bool ready = false;
 
 	//if it's not in the middle of transferring
@@ -40,6 +39,7 @@ public class myceliaNet : livingClass {
 	//list of plants used in sorting for priority
 	public List<GameObject> plantList = new List<GameObject>(); 
 
+	//intitalize stuff here....
 	void Start(){
 		
 		sendText = GetComponent<UnityEngine.UI.Text>();
@@ -79,12 +79,11 @@ public class myceliaNet : livingClass {
 			}
 			plantList.Sort((IComparer<GameObject>)new plantSort());
 
+			//finished sorting the query?
+			Debug.Log("finished the query flow");
+
 			myceliaTimer = 0.0f;
 		}
-
-		//quicksort plant nutri amounts least to greatest
-
-		//check plant states
 
 	}
 
@@ -120,7 +119,7 @@ public class myceliaNet : livingClass {
 
 				//stuff
 				targetPos = destPos - sourcePos;
-				sendText.text = send_nutri.ToString(); //???
+				sendText.text = send_nutri.ToString();
 
 			}
 
@@ -131,36 +130,33 @@ public class myceliaNet : livingClass {
 
 	// Update is called once per frame
 	void Update () {
-		Query ();
-		transferTimer += Time.deltaTime;
 
 		if (ready) {
 
+			Query ();
+
+			transferTimer += Time.deltaTime;
+
 			if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
-				//Debug.Log ("We're in, patching you through now.");
 				Transfer (plantList [plantList.Count - 1], plantList [0]);
 			}
 
 			if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[plantList.Count - 1].GetComponent<livingClass>().nutri)) {
-				//Debug.Log ("We're in, patching you through now.");
 				Transfer (plantList [0], plantList [plantList.Count - 1]);
 			}
 
-		}
+			//might not be querying enough
+			if (transferTimer >= transferTime) {
+				transferTimer = 0.0f;
+				transferTime = Random.Range(3, 7);
+			}
 
-		//
-		if (transferTimer >= transferTime) {
-			transferTimer = 0.0f;
-			transferTime = Random.Range(3, 7);
-		}
 
-		/*
-		if (health <= 0){
-			Destroy(this);
-		}
-		*/
+			if (health <= 0){
+				Destroy(this);
+			}
 
-		Debug.Log ("plantList[0] : " + plantList[0].GetComponent<livingClass>().nutri);
-		Debug.Log ("plantList[1] : " + plantList[1].GetComponent<livingClass>().nutri);
+		}
+			
 	}
 }
