@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\WorldScript.cs" />
      <Compile Include="Assets\Scripts\livingClass.cs" />
      <Compile Include="Assets\Scripts\myceliaNet.cs" />
+     <Compile Include="Assets\Scripts\myceliaText.cs" />
      <Compile Include="Assets\UIScript\LandColorChange.cs" />
      <Compile Include="Assets\UIScript\SkyColorChange.cs" />
      <Compile Include="Assets\utilityAgent.cs" />

@@ -102,12 +102,7 @@ public class livingClass : MonoBehaviour {
 				}
 
 			}
-
-			//use anyway up if we dont
-			else if(resours < resours_need){
-				//resours -= resours;
-				//nutri += (resours/2);
-			}
+				
 		}
 
 	}
@@ -126,7 +121,6 @@ public class livingClass : MonoBehaviour {
 		
 		//runs the child transfer function
 		//run it in mycelia.
-		//childScript.Transfer(douglasFir, paperBirch);
 		if (nutri > nutri_need) {
 			plant_state = "assist";
 		} else {

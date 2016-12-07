@@ -10,8 +10,7 @@ using UnityEngine.UI;
 
 public class myceliaNet : livingClass {
 
-	//Text stuff
-	public Text sendText;
+	public GameObject myceliaText;
 
 	//Vector2
 	Vector2 targetPos;
@@ -19,7 +18,7 @@ public class myceliaNet : livingClass {
 	//timers
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
-	public float queryTimer = 0.0f;
+	//public float queryTimer = 0.0f;
 
 	//vector 2's that find the positions of both plants involved
 	public Vector2 sourcePos;
@@ -39,8 +38,6 @@ public class myceliaNet : livingClass {
 
 	//intitalize stuff here....
 	void Start(){
-		
-		sendText = GetComponent<UnityEngine.UI.Text>();
 
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
@@ -111,10 +108,8 @@ public class myceliaNet : livingClass {
 			destination.GetComponent<livingClass>().nutri += send_nutri ;
 			source.GetComponent<livingClass>().nutri -= send_nutri;
 
-			//stuff
-			targetPos = destPos - sourcePos;
-			sendText.text = send_nutri.ToString();
-
+			//Instantiate
+			Instantiate(myceliaText, new Vector2 (sourcePos.x, sourcePos.y), Quaternion.identity);
 		}
 		//take about... random time.
 
@@ -125,7 +120,7 @@ public class myceliaNet : livingClass {
 
 			transferTimer += Time.deltaTime;
 
-			queryTimer += Time.deltaTime;
+			//queryTimer += Time.deltaTime;
 			
 			/*
 			if (queryTimer >= 10) {
