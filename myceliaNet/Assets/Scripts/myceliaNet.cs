@@ -19,6 +19,7 @@ public class myceliaNet : livingClass {
 	//timers
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
+	public float queryTimer = 0.0f;
 
 	//vector 2's that find the positions of both plants involved
 	public Vector2 sourcePos;
@@ -26,9 +27,6 @@ public class myceliaNet : livingClass {
 
 	//how much to send
 	public int send_nutri;
-
-	//is it ready?
-	bool ready = false;
 
 	//if it's not in the middle of transferring
 	bool transferring = false;
@@ -50,7 +48,7 @@ public class myceliaNet : livingClass {
 			plantList.Add (plant);
 		}
 		plantList.Sort((IComparer<GameObject>)new plantSort());
-		ready = true;
+
 		transferTime = Random.Range(3, 7);
 
 	}
@@ -65,7 +63,7 @@ public class myceliaNet : livingClass {
 
 	//Query for objets again in the scene 
 	//Called in update every 10 seconds.
-
+	/*
 	void Query(){
 
 		myceliaTimer += Time.deltaTime;
@@ -86,6 +84,7 @@ public class myceliaNet : livingClass {
 		}
 
 	}
+	*/
 
 
 	/*
@@ -131,11 +130,16 @@ public class myceliaNet : livingClass {
 	// Update is called once per frame
 	void Update () {
 
-		if (ready) {
-
-			Query ();
-
 			transferTimer += Time.deltaTime;
+
+			queryTimer += Time.deltaTime;
+			
+			/*
+			if (queryTimer >= 10) {
+				Query ();
+			}
+			*/
+				
 
 			if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
 				Transfer (plantList [plantList.Count - 1], plantList [0]);
@@ -156,7 +160,5 @@ public class myceliaNet : livingClass {
 				Destroy(this);
 			}
 
-		}
-			
 	}
 }
