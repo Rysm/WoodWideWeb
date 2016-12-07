@@ -112,10 +112,12 @@ public class livingClass : MonoBehaviour {
 
 	}
 
+	/*
 	//Assess function
 	void Assess(){
 		
 	}
+	*/
 
 	//Assist plant
 	void Assist(){

@@ -20,6 +20,10 @@ public class DrawLine : MonoBehaviour {
         lineRenderer.SetWidth(2f, 2f);
 
         dist = Vector3.Distance(origin.position, destination.position);
+
+		myceliaNet myParent = transform.parent.GetComponent<myceliaNet>();
+
+		Debug.Log ("count from within Drawline : " + myParent.plantList.Count);
 	}
 	
 	// Update is called once per frame
@@ -35,6 +39,8 @@ public class DrawLine : MonoBehaviour {
             Vector3 pointAlongline = x * Vector3.Normalize(pointB - pointA) + pointA;
 
             lineRenderer.SetPosition(1, pointAlongline);
+
         }
+			
 	}
 }

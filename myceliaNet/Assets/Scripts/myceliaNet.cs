@@ -61,6 +61,7 @@ public class myceliaNet : livingClass {
 		}
 	}
 
+
 	//Query for objets again in the scene 
 	//Called in update every 10 seconds.
 	/*
@@ -148,6 +149,8 @@ public class myceliaNet : livingClass {
 				transferTime = Random.Range(3, 7);
 			}
 
+
+			//Debug.Log ("plantlist count : " + plantList.Count);
 
 			if (health <= 0){
 				Destroy(this);
