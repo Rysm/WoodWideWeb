@@ -130,8 +130,8 @@ public class myceliaNet : livingClass {
 			targetPos = destPos - sourcePos;
 
 			//text?
-			popText.showText (send_nutri.ToString(), sourcePos);
-			popText.showText (send_nutri.ToString(), destPos);
+			popText.showText ("--" + send_nutri.ToString(), sourcePos);
+			popText.showText ("++" + send_nutri.ToString(), destPos);
 
 			//sendText.text = send_nutri.ToString();
 

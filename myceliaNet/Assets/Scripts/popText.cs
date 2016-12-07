@@ -13,14 +13,18 @@ public class popText : myceliaNet{
 	}
 
 	public static void showText(string text, Vector2 pos){
-		var newInstance = new GameObject ("damage");
-		var textPop = newInstance.AddComponent<popText> (); 
-		textPop.position = pos;
-		textPop.myText = text;
+
+			var newInstance = new GameObject ("damage");
+			var textPop = newInstance.AddComponent<popText> (); 
+			textPop.position = pos;
+			textPop.myText = text;
+
 	}
 
 	void Update(){
+		
 		screenPointPosition.y -= 1;
+	
 	}
 
 	void OnGUI(){
