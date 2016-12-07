@@ -17,7 +17,7 @@ public class LandColorChange : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {ß
         ChangeColor();
     }
 
