@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class myceliaNet : livingClass {
 
 	//Text stuff
-	public Text sendText;
+	//public Text sendText;
 
 	//Vector2
 	Vector2 targetPos;
@@ -40,7 +40,7 @@ public class myceliaNet : livingClass {
 
     //intitalize stuff here....
     void Start(){
-		sendText = GetComponent<UnityEngine.UI.Text>();
+		//sendText = GetComponent<UnityEngine.UI.Text>();
 
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
@@ -128,7 +128,12 @@ public class myceliaNet : livingClass {
 
 			//stuff
 			targetPos = destPos - sourcePos;
-			sendText.text = send_nutri.ToString();
+
+			//text?
+			popText.showText (send_nutri.ToString(), sourcePos);
+			popText.showText (send_nutri.ToString(), destPos);
+
+			//sendText.text = send_nutri.ToString();
 
 		}
 		//take about... random time.
