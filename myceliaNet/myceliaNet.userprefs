@@ -1,10 +1,10 @@
-﻿<Properties StartupItem="myceliaNet.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/popText.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/myceliaNet.cs">
     <Files>
-      <File FileName="Assets/Scripts/myceliaNet.cs" Line="134" Column="24" />
-      <File FileName="Assets/Scripts/DrawLine.cs" Line="26" Column="59" />
-      <File FileName="Assets/Scripts/popText.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/livingClass.cs" Line="193" Column="23" />
+      <File FileName="Assets/Scripts/myceliaNet.cs" Line="198" Column="5" />
+      <File FileName="Assets/Scripts/popText.cs" Line="5" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

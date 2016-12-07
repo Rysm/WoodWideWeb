@@ -142,12 +142,14 @@ public class livingClass : MonoBehaviour {
 		plant_age += 0.01f;
 	}
 
+	/*
 	//Plants take damage
 	void Infected(){
 		
 		health -= nutri;
 
 	}
+	*/
 
 	void makeResource(){
 		if (resours < resours_cap) {
@@ -188,7 +190,7 @@ public class livingClass : MonoBehaviour {
 
 			//die
 			if (health <= 0){
-				Destroy(this);
+				Destroy(gameObject);
 			}
 
 			plantTime = 0.0f;
