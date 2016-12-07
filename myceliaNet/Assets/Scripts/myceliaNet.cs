@@ -9,9 +9,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class myceliaNet : livingClass {
+    
 
 	//Text stuff
-	public Text sendText;
+	//public Text sendText;
 
 	//Vector2
 	Vector2 targetPos;
@@ -40,7 +41,6 @@ public class myceliaNet : livingClass {
 
     //intitalize stuff here....
     void Start(){
-		sendText = GetComponent<UnityEngine.UI.Text>();
 
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
@@ -128,9 +128,12 @@ public class myceliaNet : livingClass {
 
 			//stuff
 			targetPos = destPos - sourcePos;
-			sendText.text = send_nutri.ToString();
 
-		}
+            popText.showText("--" + send_nutri.ToString(), sourcePos);
+            popText.showText("++" + send_nutri.ToString(), destPos);
+
+
+        }
 		//take about... random time.
 
 	}
@@ -149,16 +152,40 @@ public class myceliaNet : livingClass {
 			*/
 				
 
-			if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri)) {
-				Transfer (plantList [plantList.Count - 1], plantList [0]);
+			if ((plantList [plantList.Count - 1].GetComponent<livingClass> ().plant_state == "assist") && (plantList[plantList.Count - 1].GetComponent<livingClass>().nutri > plantList[plantList.Count-1].GetComponent<livingClass>().nutri_need)) {
+            for(int a = 0; a < plantList.Count; a++)
+            {
+                Transfer(plantList[plantList.Count - 1], plantList[a]);
+            }
+            //Transfer (plantList [plantList.Count - 1], plantList [0]);
 			}
+            else if ((plantList[plantList.Count - 2].GetComponent<livingClass>().plant_state == "assist") && (plantList[plantList.Count - 2].GetComponent<livingClass>().nutri > plantList[plantList.Count - 2].GetComponent<livingClass>().nutri_need))
+            {
+                for (int a = 0; a < plantList.Count; a++)
+                {
+                    Transfer(plantList[plantList.Count - 2], plantList[a]);
+                }
+                //Transfer (plantList [plantList.Count - 1], plantList [0]);
+            }
 
-			if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[plantList.Count - 1].GetComponent<livingClass>().nutri)) {
-				Transfer (plantList [0], plantList [plantList.Count - 1]);
+        if ((plantList [0].GetComponent<livingClass> ().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri_need)) {
+            for (int a = 0; a < plantList.Count; a++)
+            {
+                Transfer(plantList[a], plantList[plantList.Count - 1]);
+            }
+            //Transfer (plantList [0], plantList [plantList.Count - 1]);
 			}
+        if ((plantList[0].GetComponent<livingClass>().plant_state == "assist") && (plantList[0].GetComponent<livingClass>().nutri > plantList[0].GetComponent<livingClass>().nutri_need))
+        {
+            for (int a = 0; a < plantList.Count; a++)
+            {
+                Transfer(plantList[a], plantList[plantList.Count - 2]);
+            }
+            //Transfer (plantList [0], plantList [plantList.Count - 1]);
+        }
 
-			//might not be querying enough
-			if (transferTimer >= transferTime) {
+        //might not be querying enough
+        if (transferTimer >= transferTime) {
 				transferTimer = 0.0f;
 				transferTime = Random.Range(3, 7);
 			}
