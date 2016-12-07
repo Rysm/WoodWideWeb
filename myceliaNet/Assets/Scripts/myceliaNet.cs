@@ -29,7 +29,7 @@ public class myceliaNet : livingClass {
 	public int send_nutri;
 
 	//if it's not in the middle of transferring
-	bool transferring = false;
+	//bool transferring = false;
 
 	//dank
 	int transferTime;
@@ -96,31 +96,24 @@ public class myceliaNet : livingClass {
 
 		transferTimer += Time.deltaTime;
 
-		//if we aint transferring already
-		if (transferring == false) {
+		//Get it to the target between 1 and 10 seconds
+		if (transferTimer >= Random.Range(1, 5) ){
 
-			//Get it to the target between 1 and 10 seconds
-			if (transferTimer >= Random.Range(1, 5) ){
+			sourcePos = destination.transform.position;
+			destPos = source.transform.position;
 
-				transferring = true;
+			//get their needed val
+			send_nutri = destination.GetComponent<livingClass>().nutri_need;
 
-				sourcePos = destination.transform.position;
-				destPos = source.transform.position;
+			Debug.Log ("send_nutri : "  + send_nutri);
 
-				//get their needed val
-				send_nutri = destination.GetComponent<livingClass>().nutri_need;
+			//exchange values as needed
+			destination.GetComponent<livingClass>().nutri += send_nutri ;
+			source.GetComponent<livingClass>().nutri -= send_nutri;
 
-				Debug.Log ("send_nutri : "  + send_nutri);
-
-				//exchange values as needed
-				destination.GetComponent<livingClass>().nutri += send_nutri ;
-				source.GetComponent<livingClass>().nutri -= send_nutri;
-
-				//stuff
-				targetPos = destPos - sourcePos;
-				sendText.text = send_nutri.ToString();
-
-			}
+			//stuff
+			targetPos = destPos - sourcePos;
+			sendText.text = send_nutri.ToString();
 
 		}
 		//take about... random time.
