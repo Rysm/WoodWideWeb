@@ -37,6 +37,10 @@ public class DrawLine : myceliaNet {
             lineRenderer.SetPosition(1, pointAlongline);
 
         }
+
+		if (destination == null || origin == null) {
+			Destroy (gameObject);
+		}
 			
 	}
 }

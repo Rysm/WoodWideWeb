@@ -148,7 +148,7 @@ public class myceliaNet : livingClass {
 			//Debug.Log ("plantlist count : " + plantList.Count);
 
 			if (health <= 0){
-				Destroy(this);
+				Destroy(gameObject);
 			}
 
 	}
