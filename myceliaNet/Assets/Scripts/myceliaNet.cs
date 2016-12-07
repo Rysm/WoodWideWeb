@@ -20,9 +20,10 @@ public class myceliaNet : livingClass {
 	public float myceliaTimer = 0.0f;
 	public float transferTimer = 0.0f;
 	public float queryTimer = 0.0f;
+    public int initTime = 0;
 
-	//vector 2's that find the positions of both plants involved
-	public Vector2 sourcePos;
+    //vector 2's that find the positions of both plants involved
+    public Vector2 sourcePos;
 	public Vector2 destPos;
 
 	//how much to send
@@ -35,11 +36,10 @@ public class myceliaNet : livingClass {
 	int transferTime;
 
 	//list of plants used in sorting for priority
-	public List<GameObject> plantList = new List<GameObject>(); 
+	public List<GameObject> plantList = new List<GameObject>();
 
-	//intitalize stuff here....
-	void Start(){
-		
+    //intitalize stuff here....
+    void Start(){
 		sendText = GetComponent<UnityEngine.UI.Text>();
 
 		//get all the plants
@@ -47,12 +47,16 @@ public class myceliaNet : livingClass {
 		foreach (GameObject plant in plants) {
 			plantList.Add (plant);
 		}
+        setParents(plantList);
 		plantList.Sort((IComparer<GameObject>)new plantSort());
 
-		transferTime = Random.Range(3, 7);
+        transferTime = Random.Range(3, 7);
+        Debug.Log("I'm done.");
+        Debug.Log("PlantList size is: " + plantList.Count);
+        initTime += 2;
 
-	}
-
+    }
+  
 	private class plantSort : IComparer<GameObject>{
 		int IComparer<GameObject>.Compare(GameObject _objA, GameObject _objB) {
 			int t1 = _objA.GetComponent<livingClass>().nutri;
@@ -61,10 +65,20 @@ public class myceliaNet : livingClass {
 		}
 	}
 
+    void setParents(List<GameObject> x)
+    {
+        Debug.Log("I'm in");
+        int size = x.Count;
+        for (int y = 0; y < size - 1; y++)
+        {
+            plantList[y].gameObject.transform.SetParent(plantList[y + 1].gameObject.transform);
+        }
+    }
 
-	//Query for objets again in the scene 
-	//Called in update every 10 seconds.
-	/*
+
+    //Query for objets again in the scene 
+    //Called in update every 10 seconds.
+    /*
 	void Query(){
 
 		myceliaTimer += Time.deltaTime;
@@ -88,11 +102,11 @@ public class myceliaNet : livingClass {
 	*/
 
 
-	/*
+    /*
 	 * Sends whatever in x amount of time based on distance 
 	 * 
 	*/
-	void Transfer(GameObject source, GameObject destination){
+    void Transfer(GameObject source, GameObject destination){
 
 
 		transferTimer += Time.deltaTime;
@@ -153,7 +167,7 @@ public class myceliaNet : livingClass {
 			//Debug.Log ("plantlist count : " + plantList.Count);
 
 			if (health <= 0){
-				Destroy(gameObject);
+				Destroy(this);
 			}
 
 	}

@@ -44,7 +44,7 @@ public class livingClass : MonoBehaviour {
 	public string plant_state = "idle";
 
 	//plant toxic state
-	public bool plantSick = false;
+	//bool plantSick = false;
 
 	void Awake(){
 		nutri = Random.Range(1,4) * 20;
@@ -145,7 +145,7 @@ public class livingClass : MonoBehaviour {
 	//Plants take damage
 	void Infected(){
 		
-		health -= nutri*2;
+		health -= nutri;
 
 	}
 
@@ -180,14 +180,15 @@ public class livingClass : MonoBehaviour {
 			//Repair ();
 			Assist ();
 
+			/*
 			if (plantSick == true){
 				Infected ();
 			}
-
+			*/
 
 			//die
 			if (health <= 0){
-				Destroy(gameObject);
+				Destroy(this);
 			}
 
 			plantTime = 0.0f;
