@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawLine : MonoBehaviour {
+public class DrawLine : myceliaNet {
 
     private LineRenderer lineRenderer;
     private float counter;
@@ -20,10 +20,6 @@ public class DrawLine : MonoBehaviour {
         lineRenderer.SetWidth(2f, 2f);
 
         dist = Vector3.Distance(origin.position, destination.position);
-
-		myceliaNet myParent = transform.parent.GetComponent<myceliaNet>();
-
-		Debug.Log ("count from within Drawline : " + myParent.plantList.Count);
 	}
 	
 	// Update is called once per frame
