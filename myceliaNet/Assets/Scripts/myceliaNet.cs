@@ -41,6 +41,10 @@ public class myceliaNet : livingClass {
 
     //intitalize stuff here....
     void Start(){
+<<<<<<< HEAD
+=======
+		//sendText = GetComponent<UnityEngine.UI.Text>();
+>>>>>>> origin/master
 
 		//get all the plants
 		GameObject[] plants = GameObject.FindGameObjectsWithTag ("plant");
@@ -128,6 +132,15 @@ public class myceliaNet : livingClass {
 
 			//stuff
 			targetPos = destPos - sourcePos;
+<<<<<<< HEAD
+=======
+
+			//text?
+			popText.showText ("--" + send_nutri.ToString(), sourcePos);
+			popText.showText ("++" + send_nutri.ToString(), destPos);
+
+			//sendText.text = send_nutri.ToString();
+>>>>>>> origin/master
 
             popText.showText("--" + send_nutri.ToString(), sourcePos);
             popText.showText("++" + send_nutri.ToString(), destPos);
